@@ -1,9 +1,10 @@
 import axios from "axios";
+import { remoteUrl } from "constants";
 
 const instance = axios.create({
   withCredentials: false,
   crossDomain: true,
-  baseURL: "https://factorial.bratslavsky.ru/rest",
+  baseURL: remoteUrl + "/rest",
   headers: {},
 });
 
@@ -14,5 +15,11 @@ export const articlesApi = {
 
   getArticle(uri) {
     return instance.get(`/articles/?uri=articles/${uri}.html`).then((response) => response.data);
+  },
+};
+
+export const appApi = {
+  getMenu() {
+    return instance.get("/menu/").then((response) => response.data);
   },
 };

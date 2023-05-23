@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getArticle } from "redux/articles_reducer";
 
-const ArticleContainer = ({ article, getArticle, ...props }) => {
+const ArticleContainer = ({ article, getArticle, ...restProps }) => {
   const { uri } = useParams();
 
   useEffect(() => {

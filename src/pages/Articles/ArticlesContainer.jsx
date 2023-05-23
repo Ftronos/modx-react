@@ -1,22 +1,14 @@
+import Grid from "components/Grid/Grid";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getArticles } from "redux/articles_reducer";
 
-const ArticlesContainer = ({ articles, getArticles, ...props }) => {
+const ArticlesContainer = ({ articles, getArticles, ...restProps }) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
-  return (
-    <>
-      {articles.map((article) => (
-        <Link to={`/articles/${article.alias}`} key={article.id}>
-          <div>{article.longtitle}</div>
-        </Link>
-      ))}
-    </>
-  );
+  return <Grid data={articles} itemLink="articles" />;
 };
 
 const mapStateToProps = (state) => ({
