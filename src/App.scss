@@ -1,11 +1,13 @@
 @use "scss-reset/reset";
+@import "assets/scss/fonts";
 
 a {
   text-decoration: none;
   color: inherit;
 }
 
-.body {
+body {
+  font-family: "Roboto";
 }
 
 .wrapper {
