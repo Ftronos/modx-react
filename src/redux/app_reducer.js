@@ -1,6 +1,6 @@
 import { appApi } from "./../api/api";
 
-const SET_MENU = "SET_MENU";
+const SET_HEADER_MENU = "SET_MENU";
 
 let initialState = {
   menu: [],
@@ -8,7 +8,7 @@ let initialState = {
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_MENU: {
+    case SET_HEADER_MENU: {
       return {
         ...state,
         menu: action.menu,
@@ -21,16 +21,16 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export const setMenu = (menu) => ({
-  type: SET_MENU,
+export const setHeaderMenu = (menu) => ({
+  type: SET_HEADER_MENU,
   menu,
 });
 
-export const getMenu = () => async (dispatch) => {
+export const initApp = () => async (dispatch) => {
   try {
-    let data = await appApi.getMenu();
+    let data = await appApi.getHeaderMenu();
 
-    dispatch(setMenu(data.results));
+    dispatch(setHeaderMenu(data.results));
   } catch (error) {
     console.error(error);
   }

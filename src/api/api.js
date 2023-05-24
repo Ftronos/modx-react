@@ -19,7 +19,7 @@ export const articlesApi = {
 };
 
 export const appApi = {
-  getMenu() {
+  getHeaderMenu() {
     return instance.get("/menu/").then((response) => response.data);
   },
 };

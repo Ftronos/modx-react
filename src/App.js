@@ -1,20 +1,20 @@
-import Header from "components/template/Header/Header";
+import HeaderContainer from "components/template/Header/HeaderContainer";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { getMenu } from "redux/app_reducer";
+import { initApp } from "redux/app_reducer";
 import router from "router/router";
 import "./App.scss";
 
-function App({ getMenu, menu }) {
+function App({ initApp, menu }) {
   useEffect(() => {
-    getMenu();
-  }, [getMenu]);
+    initApp();
+  }, [initApp]);
 
   return (
     <HashRouter>
       <div className="body">
-        <Header menu={menu} />
+        <HeaderContainer menu={menu} />
         <Routes>
           {router.map((route, idx) => (
             <Route path={route.path} element={<route.component />} key={idx} />
@@ -25,8 +25,4 @@ function App({ getMenu, menu }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  menu: state.app.menu,
-});
-
-export default connect(mapStateToProps, { getMenu })(App);
+export default connect(() => {}, { initApp })(App);
