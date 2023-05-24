@@ -1,11 +1,10 @@
-import ArticleContainer from "pages/Article/ArticleContainer";
-import ArticlesContainer from "pages/Articles/ArticlesContainer";
-import { useEffect } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
-import "./App.scss";
-import { connect } from "react-redux";
-import { getMenu } from "redux/app_reducer";
 import Header from "components/template/Header/Header";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { getMenu } from "redux/app_reducer";
+import router from "router/router";
+import "./App.scss";
 
 function App({ getMenu, menu }) {
   useEffect(() => {
@@ -17,8 +16,9 @@ function App({ getMenu, menu }) {
       <div className="body">
         <Header menu={menu} />
         <Routes>
-          <Route path="/articles/" element={<ArticlesContainer />} />
-          <Route path="/articles/:uri" element={<ArticleContainer />} />
+          {router.map((route, idx) => (
+            <Route path={route.path} element={<route.component />} key={idx} />
+          ))}
         </Routes>
       </div>
     </HashRouter>
