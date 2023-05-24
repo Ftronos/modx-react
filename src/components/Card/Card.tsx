@@ -1,10 +1,17 @@
 import classNames from "classnames";
 import Image from "components/Image/Image";
-import { remoteUrl } from "constants";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
+import { resource_type } from "types";
+import { remoteUrl } from "utils/constants";
+
 import styles from "./Card.module.scss";
 
-const Card = ({ data, ...restProps }) => {
+type ownProps_type = {
+  data: resource_type;
+  [x: string]: any;
+};
+
+const Card: FC<ownProps_type> = ({ data, ...restProps }) => {
   useEffect(() => {
     document.title = data.pagetitle;
   }, [data.pagetitle]);

@@ -1,12 +1,14 @@
-import HeaderContainer from "components/template/Header/HeaderContainer";
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { HashRouter, Route, Routes } from "react-router-dom";
-import { initApp } from "redux/app_reducer";
-import router from "router/router";
 import "./App.scss";
 
-function App({ initApp, menu }) {
+import HeaderContainer from "components/template/Header/HeaderContainer";
+import { FC, useEffect } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { initApp } from "redux/app_reducer";
+import { AppStateType } from "redux/store";
+import router from "router/router";
+
+const App: FC<reduxProps_type> = ({ initApp }) => {
   useEffect(() => {
     initApp();
   }, [initApp]);
@@ -14,7 +16,7 @@ function App({ initApp, menu }) {
   return (
     <HashRouter>
       <div className="body wrapper">
-        <HeaderContainer menu={menu} />
+        <HeaderContainer />
         <Routes>
           {router.map((route, idx) => (
             <Route path={route.path} element={<route.component />} key={idx} />
@@ -23,6 +25,14 @@ function App({ initApp, menu }) {
       </div>
     </HashRouter>
   );
-}
+};
 
-export default connect(() => {}, { initApp })(App);
+const mapStateToProps = (state: AppStateType) => ({});
+
+const connector = connect(mapStateToProps, {
+  initApp,
+});
+
+type reduxProps_type = ConnectedProps<typeof connector>;
+
+export default connector(App);

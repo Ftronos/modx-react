@@ -1,7 +1,13 @@
 import DefaultImage from "assets/images/image-default.png";
+import { FC } from "react";
 
-const Image = ({ src, alt, ...restProps }) => {
-  console.log(src);
+type ownProps_type = {
+  src: string;
+  alt: string;
+  [x: string]: any;
+};
+
+const Image: FC<ownProps_type> = ({ src, alt, ...restProps }) => {
   return (
     <figure className={restProps.className}>
       <img src={src || DefaultImage} alt={alt} />
