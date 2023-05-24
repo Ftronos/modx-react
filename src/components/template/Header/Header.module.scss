@@ -1,0 +1,14 @@
+@import "assets/scss/vars";
+
+.header {
+  padding-block: 25px;
+  box-shadow: 0 0 2px transparentize($black, 0.5);
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

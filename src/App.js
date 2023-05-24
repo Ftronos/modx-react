@@ -13,7 +13,7 @@ function App({ initApp, menu }) {
 
   return (
     <HashRouter>
-      <div className="body">
+      <div className="body wrapper">
         <HeaderContainer menu={menu} />
         <Routes>
           {router.map((route, idx) => (

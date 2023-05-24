@@ -4,3 +4,21 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.body {
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1200px 1fr;
+
+  > * {
+    grid-column-start: 2;
+    grid-column-end: -2;
+  }
+}
+
+.full-width {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
