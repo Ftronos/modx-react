@@ -9,7 +9,7 @@ const ArticlesContainer: FC<reduxProps_type> = ({ articles, getArticles, ...rest
     getArticles();
   }, [getArticles]);
 
-  return <Grid data={articles} itemLink="articles" />;
+  return <Grid data={articles} />;
 };
 
 const mapStateToProps = (state: AppStateType) => ({

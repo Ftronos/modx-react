@@ -15,7 +15,7 @@ const Grid: FC<ownProps_type> = ({ data, ...restProps }) => {
   return (
     <div className={classNames(styles.grid, restProps.className)}>
       {data.map((item) => (
-        <Link to={`/articles/${item.alias}`} key={item.id}>
+        <Link to={"/" + item.uri} key={item.id}>
           <Card data={item} />
         </Link>
       ))}

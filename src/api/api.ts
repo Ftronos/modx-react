@@ -24,4 +24,8 @@ export const appApi = {
   getHeaderMenu() {
     return instance.get<Array<resource_type>>("/menu/").then(responseBody);
   },
+
+  getPage(uri: string) {
+    return instance.get<resource_type>(`/resources/?uri=${uri}`).then(responseBody);
+  },
 };

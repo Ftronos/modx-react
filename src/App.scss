@@ -1,5 +1,6 @@
 @use "scss-reset/reset";
 @import "assets/scss/fonts";
+@import "assets/scss/vars";
 
 a {
   text-decoration: none;
@@ -23,4 +24,22 @@ body {
 .full-width {
   grid-column-start: 1;
   grid-column-end: -1;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 2px;
+    background-color: $black;
+  }
 }

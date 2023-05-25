@@ -1,12 +1,12 @@
 import "./App.scss";
 
+import Page from "components/Page/Page";
 import HeaderContainer from "components/template/Header/HeaderContainer";
 import { FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { initApp } from "redux/app_reducer";
 import { AppStateType } from "redux/store";
-import router from "router/router";
 
 const App: FC<reduxProps_type> = ({ initApp }) => {
   useEffect(() => {
@@ -17,11 +17,7 @@ const App: FC<reduxProps_type> = ({ initApp }) => {
     <HashRouter>
       <div className="body wrapper">
         <HeaderContainer />
-        <Routes>
-          {router.map((route, idx) => (
-            <Route path={route.path} element={<route.component />} key={idx} />
-          ))}
-        </Routes>
+        <Page />
       </div>
     </HashRouter>
   );

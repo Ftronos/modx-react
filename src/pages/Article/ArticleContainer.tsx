@@ -1,32 +1,17 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getArticle } from "redux/articles_reducer";
+import { getPage } from "redux/app_reducer";
 import { AppStateType } from "redux/store";
 
-const ArticleContainer: FC<reduxProps_type> = ({ article, getArticle, ...restProps }) => {
-  const { uri } = useParams();
-
-  useEffect(() => {
-    if (!uri) {
-      return;
-    }
-
-    getArticle(uri);
-  }, [getArticle, uri]);
-
-  if (!article) {
-    return <></>;
-  }
-
-  return <>{article.content}</>;
+const ArticleContainer: FC<reduxProps_type> = ({ page, getPage, ...restProps }) => {
+  return <></>;
 };
 
 const mapStateToProps = (state: AppStateType) => ({
-  article: state.articlesPage.article,
+  page: state.app.page,
 });
 
-const connector = connect(mapStateToProps, { getArticle });
+const connector = connect(mapStateToProps, { getPage });
 
 type reduxProps_type = ConnectedProps<typeof connector>;
 
