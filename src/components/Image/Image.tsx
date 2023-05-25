@@ -9,9 +9,9 @@ type ownProps_type = {
 
 const Image: FC<ownProps_type> = ({ src, alt, ...restProps }) => {
   return (
-    <figure className={restProps.className}>
-      <img src={src || DefaultImage} alt={alt} />
-    </figure>
+    <picture className={restProps.className}>
+      <img src={src || DefaultImage} alt={alt} loading="lazy" width={800} />
+    </picture>
   );
 };
 
