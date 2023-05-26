@@ -7,7 +7,7 @@ const SET_HEADER_MENU = "SET_MENU";
 const SET_PAGE = "SET_PAGE";
 
 let initialState = {
-  menu: [] as Array<resource_type>,
+  menu: [] as Array<resource_type> | [],
   page: {} as resource_type,
 };
 
@@ -63,11 +63,21 @@ export const initApp = (): ThunkType => async (dispatch) => {
   }
 };
 
+export const getMainPage = (): ThunkType => async (dispatch) => {
+  try {
+    let data = await appApi.getMainPage();
+
+    dispatch(appActions.setPage(data.object));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getPage =
   (uri: string): ThunkType =>
   async (dispatch) => {
     try {
-      let data = await appApi.getPage(uri.substring(1));
+      let data = await appApi.getPage(uri);
 
       dispatch(appActions.setPage(data.object));
     } catch (error) {

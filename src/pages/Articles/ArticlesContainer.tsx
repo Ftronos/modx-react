@@ -1,22 +1,35 @@
 import Grid from "components/Grid/Grid";
+import Page from "components/Page/Page";
 import { FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
+import { getPage } from "redux/app_reducer";
 import { getArticles } from "redux/articles_reducer";
 import { AppStateType } from "redux/store";
 
-const ArticlesContainer: FC<reduxProps_type> = ({ articles, getArticles, ...restProps }) => {
+const ArticlesContainer: FC<reduxProps_type> = ({
+  articles,
+  getArticles,
+  getPage,
+  ...restProps
+}) => {
   useEffect(() => {
+    getPage("articles/");
     getArticles();
-  }, [getArticles]);
+  }, [getArticles, getPage]);
 
-  return <Grid data={articles} />;
+  return (
+    <>
+      <Page />
+      <Grid data={articles} />
+    </>
+  );
 };
 
 const mapStateToProps = (state: AppStateType) => ({
   articles: state.articlesPage.articles,
 });
 
-const connector = connect(mapStateToProps, { getArticles });
+const connector = connect(mapStateToProps, { getArticles, getPage });
 
 type reduxProps_type = ConnectedProps<typeof connector>;
 

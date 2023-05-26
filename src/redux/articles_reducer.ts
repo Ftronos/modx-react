@@ -63,16 +63,4 @@ export const getArticles = (): ThunkType => async (dispatch) => {
   }
 };
 
-export const getArticle =
-  (uri: string): ThunkType =>
-  async (dispatch) => {
-    try {
-      let data = await articlesApi.getArticle(uri);
-
-      dispatch(articlesActions.setArticle(data.object));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
 export default articlesReducer;
