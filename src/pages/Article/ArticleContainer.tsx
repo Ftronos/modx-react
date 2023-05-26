@@ -1,5 +1,5 @@
+import Page from "components/DefaultTemplate/DefaultTemplate";
 import Image from "components/Image/Image";
-import Page from "components/Page/Page";
 import { FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { useLocation } from "react-router-dom";

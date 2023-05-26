@@ -1,4 +1,4 @@
-import Page from "components/Page/Page";
+import Page from "components/DefaultTemplate/DefaultTemplate";
 import { FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { getMainPage } from "redux/app_reducer";

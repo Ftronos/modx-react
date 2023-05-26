@@ -1,5 +1,5 @@
+import Page from "components/DefaultTemplate/DefaultTemplate";
 import Grid from "components/Grid/Grid";
-import Page from "components/Page/Page";
 import { FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { getPage } from "redux/app_reducer";
